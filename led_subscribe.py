@@ -17,7 +17,7 @@ def on_subscribe(client, userdata, mid, granted_qos):
 
 def led_on_off(on_off):
     cmd = os.path.abspath(os.path.join(os.path.dirname(__file__), "hub-ctrl"))
-    p = subprocess.Popen(["sudo",cmd,"-b","1","-d","4","-P","1","-p",on_off], 
+    p = subprocess.Popen(["sudo",cmd,"-b","1","-d","6","-P","1","-p",on_off], 
                          stdout=subprocess.PIPE)
     out, err = p.communicate()
     print(out)
