@@ -1,6 +1,9 @@
 conf = {
      "IDCF_CHANNEL_URL": "210-140-162-106.jp-east.compute.idcfcloud.com",
      "ACTION_UUID": "7da1d406-80a8-4281-b21b-828b297fff5e",
-     "ACTION_TOKEN": "aada4e04"
+     "ACTION_TOKEN": "aada4e04",
+     "TRIGGER_UUID": "",
+     "TRIGGER_TOKEN": "",
+     "FREEBOARD_UUID": ""
 }
 
