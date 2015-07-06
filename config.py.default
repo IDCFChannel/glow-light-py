@@ -1,9 +1,9 @@
 conf = {
      "IDCF_CHANNEL_URL": "",
-     "ACTION_UUID": "",
-     "ACTION_TOKEN": "",
      "TRIGGER_UUID": "",
      "TRIGGER_TOKEN": "",
+     "ACTION_UUID": "",
+     "ACTION_TOKEN": "",
      "FREEBOARD_UUID": ""
 }
 
