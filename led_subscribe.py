@@ -10,22 +10,25 @@ from config import conf
 
 def on_connect(client, userdata, rc):
     print("Connected with result code {}".format(rc))
-    client.subscribe(conf["ACTION_UUID"])
+    client.subscribe(conf["ACTION_3_UUID"])
 
 def on_subscribe(client, userdata, mid, granted_qos):
     print("Subscribed: "+str(mid)+" "+str(granted_qos))
 
 def led_on_off(on_off):
     cmd = os.path.abspath(os.path.join(os.path.dirname(__file__), "hub-ctrl"))
-    p = subprocess.Popen(["sudo",cmd,"-b","1","-d","6","-P","1","-p",on_off], 
-                         stdout=subprocess.PIPE)
+    p = subprocess.Popen(["sudo",cmd,
+	"-b", "1",
+	"-d", conf["DEVICE_NO"],
+	"-P", conf["PORT_NO"],
+	"-p", on_off], stdout=subprocess.PIPE)
     out, err = p.communicate()
     print(out)
 
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     payload = json.loads(msg.payload)
-    if payload["data"] and payload["data"]["led"]:
+    if payload["data"] and payload["data"].has_key("led"):
         on_off_str = payload["data"]["led"]
         on_off = "1" if on_off_str == "on" else "0"
         led_on_off(on_off)
@@ -34,7 +37,7 @@ def main():
     client = mqtt.Client(client_id='',
                          clean_session=True, protocol=mqtt.MQTTv311)
 
-    client.username_pw_set(conf["ACTION_UUID"], conf["ACTION_TOKEN"])
+    client.username_pw_set(conf["ACTION_3_UUID"], conf["ACTION_3_TOKEN"])
     
     client.on_connect = on_connect
     client.on_subscribe = on_subscribe

@@ -6,7 +6,7 @@ import json
 import sys
 from config import conf
 
-w1="/sys/bus/w1/devices/28-0414708c9eff/w1_slave"
+w1="/sys/bus/w1/devices/{}/w1_slave".format(config["W1_ID"])
 
 def sensing():
     raw = open(w1, "r").read()
@@ -24,7 +24,7 @@ def main():
     client = mqtt.Client(client_id='',
 	                 clean_session=True, protocol=mqtt.MQTTv311)
 
-    client.username_pw_set(conf["TRIGGER_UUID"], conf["TRIGGER_TOKEN"])
+    client.username_pw_set(conf["TRIGGER_5_UUID"], conf["TRIGGER_5_TOKEN"])
 
     client.on_connect = on_connect
     client.on_publish = on_publish
@@ -35,7 +35,7 @@ def main():
         retval = sensing()
         if retval:
              message = json.dumps({"devices":
-	                       conf["FREEBOARD_UUID"],
+	                       conf["ACTION_5_UUID"],
                               "payload": retval})
              print(message)
              client.publish("message",message)
