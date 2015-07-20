@@ -6,7 +6,7 @@ import json
 import sys
 from config import conf
 
-w1="/sys/bus/w1/devices/{}/w1_slave".format(config["W1_ID"])
+w1="/sys/bus/w1/devices/{}/w1_slave".format(conf["W1_ID"])
 
 def sensing():
     raw = open(w1, "r").read()
