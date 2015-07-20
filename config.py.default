@@ -1,9 +1,12 @@
 conf = {
      "IDCF_CHANNEL_URL": "",
-     "TRIGGER_UUID": "",
-     "TRIGGER_TOKEN": "",
-     "ACTION_UUID": "",
-     "ACTION_TOKEN": "",
-     "FREEBOARD_UUID": ""
+     "TRIGGER_5_UUID": ,
+     "TRIGGER_5_TOKEN": ,
+     "ACTION_3_UUID": ,
+     "ACTION_3_TOKEN": ,
+     "ACTION_5_UUID": ,
+     "W1_ID": ,
+     "DEVICE_NO": "2",
+     "PORT_NO": "1"
 }
 
