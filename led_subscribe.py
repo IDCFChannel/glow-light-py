@@ -29,8 +29,12 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     payload = json.loads(msg.payload)
     on_off_str = payload["data"]
-    on_off = "1" if on_off_str == "led-on" else "0"
-    led_on_off(on_off)
+    if on_off_str == "led-on" :
+        led_on_off("1")
+    elif on_off_str == "led-off" :
+        led_on_off("0")
+    else:
+        pass
 
 def main():
     client = mqtt.Client(client_id='',
